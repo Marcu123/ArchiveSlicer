@@ -5,9 +5,45 @@ import sys
 
 def create_archive(directory, extensions, archive_path):
     try:
-        print('Directory: %s' % directory)
-        print('Extensions: %s' % extensions)
-        print('Archive path: %s' % archive_path)
+        extensions = [ext.lstrip('.') for ext in extensions]
+
+        if not os.path.isdir(directory):
+            log.write(f"Error: The directory '{directory}' is not a directory.")
+            raise FileNotFoundError(f"Error: The directory '{directory}' is not a directory.")
+
+        with open(archive_path, 'wb') as archive:
+            archive.write(b'PERSONAL_ARCHIVE')
+
+            dict_extensions = {ext: 0 for ext in extensions}
+
+            for root, _, files in os.walk(directory):
+                for file in files:
+                    if file.split('.')[-1] in extensions:
+                        dict_extensions[file.split('.')[-1]] += 1
+
+            for key, value in list(dict_extensions.items()):
+                if value == 0:
+                    dict_extensions.pop(key)
+
+            archive.write(struct.pack('I', len(dict_extensions)))
+
+            for ext in dict_extensions.keys():
+                archive.write(struct.pack('I', len(ext)))
+                archive.write(ext.encode('utf-8'))
+                archive.write(struct.pack('I', dict_extensions[ext]))
+
+            for root, _, files in os.walk(directory):
+                for file in files:
+                    if file.split('.')[-1] in dict_extensions.keys():
+                        file_path = os.path.join(root, file)
+                        relative_path = os.path.relpath(file_path, directory)
+                        with open(file_path, 'rb') as f:
+                            file_data = f.read()
+
+                        archive.write(struct.pack('I', len(relative_path)))
+                        archive.write(relative_path.encode('utf-8'))
+                        archive.write(struct.pack('I', len(file_data)))
+                        archive.write(file_data)
 
         log.write(f"Archive created successfully: {archive_path}")
         print(f"Archive created successfully: {archive_path}")
@@ -63,22 +99,22 @@ try:
 
     if sys.argv[1] == 'create':
         if len(sys.argv) != 5:
-            log.write('FAILURE in create!! Usage: python slicer.py create directory with files, extension list, '
+            log.write('FAILURE in create!! Usage: python slicer.py create: directory with files, extension list, '
                       'archive path')
-            raise ValueError('Usage: python slicer.py create directory with files, extension list, archive path')
+            raise ValueError('Usage: python slicer.py create: directory with files, extension list, archive path')
         create_archive(sys.argv[2], sys.argv[3].split(','), sys.argv[4])
 
     elif sys.argv[1] == 'slice':
         if len(sys.argv) != 4:
-            log.write('FAILURE in slice!! Usage: python slicer.py slice archive path, output directory path')
-            raise ValueError('Usage: python slicer.py slice archive path, output directory path')
+            log.write('FAILURE in slice!! Usage: python slicer.py slice: archive path, output directory path')
+            raise ValueError('Usage: python slicer.py slice: archive path, output directory path')
         slice_archive(sys.argv[2], sys.argv[3])
 
     elif sys.argv[1] == 'restore':
         if len(sys.argv) != 4:
-            log.write('FAILURE in restore!! Usage: python slicer.py restore folder path with slices of archive, '
+            log.write('FAILURE in restore!! Usage: python slicer.py restore: folder path with slices of archive, '
                       'archive output path')
-            raise ValueError('Usage: python slicer.py restore folder path with slices of archive, archive output path')
+            raise ValueError('Usage: python slicer.py restore: folder path with slices of archive, archive output path')
         restore_archive(sys.argv[2], sys.argv[3])
 
     else:
