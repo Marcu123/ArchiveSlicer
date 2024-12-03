@@ -1,0 +1,3 @@
+magic_signature
+extensions number, len(extension), encoded extension name - utf 8, extension number of files found
+len(relative_path), encoded relative_path - utf 8, len(file_data), file_data
