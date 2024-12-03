@@ -1,0 +1,3 @@
+Log started:
+Archive created successfully: arhiva
+Log ended.
