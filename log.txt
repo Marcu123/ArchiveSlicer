@@ -1,3 +1,43 @@
+
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+FAILURE in create!! Usage: python slicer.py create: directory with files, extension list, archive pathValue error: Usage: python slicer.py create: directory with files, extension list, archive path
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Usage: python slicer.py <command> [args]Value error: Usage: python slicer.py <command> [args]
+Log ended.
+Log started:
+No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\dasas'.
+Log ended.
 Log started:
 Archive created successfully: arhiva
 Log ended.

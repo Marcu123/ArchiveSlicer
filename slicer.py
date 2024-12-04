@@ -11,20 +11,23 @@ def create_archive(directory, extensions, archive_path):
             log.write(f"Error: The directory '{directory}' is not a directory.")
             raise FileNotFoundError(f"Error: The directory '{directory}' is not a directory.")
 
+        dict_extensions = {ext: 0 for ext in extensions}
+
+        for root, _, files in os.walk(directory):
+            for file in files:
+                if file.split('.')[-1] in extensions:
+                    dict_extensions[file.split('.')[-1]] += 1
+
+        for key, value in list(dict_extensions.items()):
+            if value == 0:
+                dict_extensions.pop(key)
+
+        if len(dict_extensions) == 0:
+            log.write(f"Error: No files with the specified extensions found in the directory '{directory}'.")
+            raise FileNotFoundError(f"No files with the specified extensions found in the directory '{directory}'.")
+
         with open(archive_path, 'wb') as archive:
             archive.write(b'PERSONAL_ARCHIVE')
-
-            dict_extensions = {ext: 0 for ext in extensions}
-
-            for root, _, files in os.walk(directory):
-                for file in files:
-                    if file.split('.')[-1] in extensions:
-                        dict_extensions[file.split('.')[-1]] += 1
-
-            for key, value in list(dict_extensions.items()):
-                if value == 0:
-                    dict_extensions.pop(key)
-
             archive.write(struct.pack('I', len(dict_extensions)))
 
             for ext in dict_extensions.keys():
