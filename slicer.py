@@ -63,12 +63,55 @@ def create_archive(directory, extensions, archive_path):
 
 def slice_archive(archive_path, output_directory):
     try:
-        print('Slicing archive: %s' % archive_path)
-        print('Output directory: %s' % output_directory)
+        if not os.path.isfile(archive_path):
+            raise FileNotFoundError(f"Archive file '{archive_path}' not found.")
+
+        if not os.path.isdir(output_directory):
+            os.makedirs(output_directory, exist_ok=True)
+
+        number_of_slices = 5
+        archive_size = os.path.getsize(archive_path)
+        if archive_size == 0:
+            raise ValueError(f"The archive file '{archive_path}' is empty.")
+
+        slice_size = archive_size // number_of_slices
+        remaining_bytes = archive_size % number_of_slices
+
+        with open(archive_path, 'rb') as archive:
+            for i in range(number_of_slices):
+
+                if i == number_of_slices - 1:
+                    slice_size += remaining_bytes
+
+                slice_data = archive.read(int(slice_size))
+
+                if not slice_data:
+                    raise ValueError(f"Failed to read data from the archive '{archive_path}'.")
+
+                slice_hash = hash(slice_data)
+                slice_filename = f"{i}_{slice_hash}"
+                slice_path = os.path.join(output_directory, slice_filename)
+
+                try:
+                    with open(slice_path, 'wb') as slice_file:
+                        slice_file.write(slice_data)
+                except IOError as e:
+                    raise IOError(f"Failed to write slice '{slice_filename}': {e}")
+
+        log.write(f"Slicing completed successfully. Output directory: {output_directory}\n")
+        print(f"Slicing completed successfully. Output directory: {output_directory}")
 
     except FileNotFoundError as e:
+        log.write(f"File error: {e}\n")
         print(f"File error: {e}")
+    except ValueError as e:
+        log.write(f"Value error: {e}\n")
+        print(f"Value error: {e}")
+    except IOError as e:
+        log.write(f"IO error: {e}\n")
+        print(f"IO error: {e}")
     except Exception as e:
+        log.write(f"Unexpected error occurred: {e}\n")
         print(f"Unexpected error occurred: {e}")
 
 

@@ -41,3 +41,62 @@ Log ended.
 Log started:
 Archive created successfully: arhiva
 Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+
+Log ended.
+Log started:
+Unexpected error occurred: unsupported operand type(s) for +: 'int' and 'str'
+Log ended.
+Log started:
+
+Log ended.
+Log started:
+File error: [Errno 2] No such file or directory: 'output\\0_arhiva'
+Log ended.
+Log started:
+
+Log ended.
+Log started:
+Unexpected error occurred: can't convert negative int to unsigned
+Log ended.
+Log started:
+Unexpected error occurred: can't convert negative int to unsigned
+Log ended.
+Log started:
+
+Log ended.
+Log started:
+Unexpected error occurred: [WinError 32] The process cannot access the file because it is being used by another process: 'output\\0_arhiva' -> '0_2375081642475886462'
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Unexpected error occurred: [WinError 32] The process cannot access the file because it is being used by another process: 'output\\0_arhiva' -> '0_5108620769084475601'
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
