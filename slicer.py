@@ -115,14 +115,57 @@ def slice_archive(archive_path, output_directory):
         print(f"Unexpected error occurred: {e}")
 
 
-def restore_archive(folder_path, archive_output_path):
+def restore_archive(slices_path, archive_output_path):
     try:
-        print('Restoring archive from folder: %s' % folder_path)
-        print('Archive output path: %s' % archive_output_path)
+        if not os.path.isdir(slices_path):
+            raise FileNotFoundError(f"Directory with slices '{slices_path}' not found.")
+
+        slices = os.listdir(slices_path)
+        if len(slices) == 0:
+            raise FileNotFoundError(f"No slices found in the directory '{slices_path}'.")
+
+        slices.sort()
+
+        for slice_file in slices:
+            slice_path = os.path.join(slices_path, slice_file)
+            if not os.access(slice_path, os.R_OK):
+                raise PermissionError(f"Read permission denied for slice '{slice_path}'.")
+
+        archive_data = b''
+        for i, slice_file in enumerate(slices):
+            slice_path = os.path.join(slices_path, slice_file)
+            try:
+                with open(slice_path, 'rb') as sf:
+                    slice_data = sf.read()
+                    if not slice_data:
+                        raise ValueError(f"Slice '{slice_file}' is empty.")
+                    archive_data += slice_data
+            except IOError as e:
+                raise IOError(f"Failed to read slice '{slice_file}': {e}")
+
+        try:
+            with open(archive_output_path, 'wb') as archive:
+                archive.write(archive_data)
+        except IOError as e:
+            raise IOError(f"Failed to write archive '{archive_output_path}': {e}")
+
+        log.write(f"Archive restored successfully. Output path: {archive_output_path}\n")
+        print(f"Archive restored successfully. Output path: {archive_output_path}")
 
     except FileNotFoundError as e:
+        log.write(f"File error: {e}\n")
         print(f"File error: {e}")
+    except PermissionError as e:
+        log.write(f"Permission error: {e}\n")
+        print(f"Permission error: {e}")
+    except ValueError as e:
+        log.write(f"Value error: {e}\n")
+        print(f"Value error: {e}")
+    except IOError as e:
+        log.write(f"IO error: {e}\n")
+        print(f"IO error: {e}")
     except Exception as e:
+        log.write(f"Unexpected error occurred: {e}\n")
         print(f"Unexpected error occurred: {e}")
 
 
