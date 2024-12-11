@@ -23,3 +23,175 @@ Log started:
 Archive restored successfully. Output path: new_archive
 
 Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+Log ended.
+Log started:
+Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Usage: python slicer.py <command> [args]
+Available commands: create, slice, restoreValue error: Usage: python slicer.py <command> [args]
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Usage: python slicer.py <command> [args]
+Available commands: create, slice, restoreValue error: Usage: python slicer.py <command> [args]
+Log ended.
+Log started:
+Unexpected error occurred: 'pdf'
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+File error: Archive file 'C:\Users\marcu\OneDrive\Desktop\ArchiveSlicer\arhiva' not found.
+
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Value error: Precision not allowed in integer format specifier
+
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+Archive restored successfully. Output path: new_archive
+
+Log ended.
