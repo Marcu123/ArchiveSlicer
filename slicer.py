@@ -1,18 +1,23 @@
 import os
 import struct
 import sys
+from datetime import datetime
+
+
+def log_message(msg):
+    timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S] ")
+    log.write(timestamp + msg + "\n")
 
 
 def create_archive(directory, extensions, archive_path):
     try:
         if extensions == ['ALL']:
             extensions = []
-
         else:
             extensions = [ext.lstrip('.') for ext in extensions]
 
         if not os.path.isdir(directory):
-            log.write(f"Error: The directory '{directory}' is not a directory.")
+            log_message(f"Error: The directory '{directory}' is not a directory.")
             raise FileNotFoundError(f"Error: The directory '{directory}' is not a directory.")
 
         if not extensions:
@@ -36,7 +41,7 @@ def create_archive(directory, extensions, archive_path):
                 dict_extensions.pop(key)
 
         if len(dict_extensions) == 0:
-            log.write(f"Error: No files with the specified extensions found in the directory '{directory}'.")
+            log_message(f"Error: No files with the specified extensions found in the directory '{directory}'.")
             raise FileNotFoundError(f"No files with the specified extensions found in the directory '{directory}'.")
 
         with open(archive_path, 'wb') as archive:
@@ -62,24 +67,24 @@ def create_archive(directory, extensions, archive_path):
                             archive.write(struct.pack('I', len(file_data)))
                             archive.write(file_data)
                         except IOError as e:
-                            log.write(f"Failed to read file '{file_path}': {e}")
+                            log_message(f"Failed to read file '{file_path}': {e}")
                             print(f"Failed to read file '{file_path}': {e}")
                             sys.exit(1)
 
-        log.write(f"Archive created successfully: {archive_path}")
+        log_message(f"Archive created successfully: {archive_path}")
         print(f"Archive created successfully: {archive_path}")
     except FileNotFoundError as e:
-        log.write(f"File error: {e}")
+        log_message(f"File error: {e}")
         print(f"File error: {e}")
         sys.exit(1)
 
     except struct.error as e:
-        log.write(f"Struct error while packing data: {e}")
+        log_message(f"Struct error while packing data: {e}")
         print(f"Struct error while packing data: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log.write(f"Unexpected error occurred: {e}")
+        log_message(f"Unexpected error occurred: {e}")
         print(f"Unexpected error occurred: {e}")
         sys.exit(1)
 
@@ -120,26 +125,26 @@ def slice_archive(archive_path, output_directory, number_of_slices=5):
                 except IOError as e:
                     raise IOError(f"Failed to write slice '{slice_filename}': {e}")
 
-        log.write(f"Slicing completed successfully. Output directory: {output_directory}\n")
+        log_message(f"Slicing completed successfully. Output directory: {output_directory}")
         print(f"Slicing completed successfully. Output directory: {output_directory}")
 
     except FileNotFoundError as e:
-        log.write(f"File error: {e}\n")
+        log_message(f"File error: {e}")
         print(f"File error: {e}")
         sys.exit(1)
 
     except ValueError as e:
-        log.write(f"Value error: {e}\n")
+        log_message(f"Value error: {e}")
         print(f"Value error: {e}")
         sys.exit(1)
 
     except IOError as e:
-        log.write(f"IO error: {e}\n")
+        log_message(f"IO error: {e}")
         print(f"IO error: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log.write(f"Unexpected error occurred: {e}\n")
+        log_message(f"Unexpected error occurred: {e}")
         print(f"Unexpected error occurred: {e}")
         sys.exit(1)
 
@@ -178,31 +183,31 @@ def restore_archive(slices_path, archive_output_path):
         except IOError as e:
             raise IOError(f"Failed to write archive '{archive_output_path}': {e}")
 
-        log.write(f"Archive restored successfully. Output path: {archive_output_path}\n")
+        log_message(f"Archive restored successfully. Output path: {archive_output_path}")
         print(f"Archive restored successfully. Output path: {archive_output_path}")
 
     except FileNotFoundError as e:
-        log.write(f"File error: {e}\n")
+        log_message(f"File error: {e}")
         print(f"File error: {e}")
         sys.exit(1)
 
     except PermissionError as e:
-        log.write(f"Permission error: {e}\n")
+        log_message(f"Permission error: {e}")
         print(f"Permission error: {e}")
         sys.exit(1)
 
     except ValueError as e:
-        log.write(f"Value error: {e}\n")
+        log_message(f"Value error: {e}")
         print(f"Value error: {e}")
         sys.exit(1)
 
     except IOError as e:
-        log.write(f"IO error: {e}\n")
+        log_message(f"IO error: {e}")
         print(f"IO error: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log.write(f"Unexpected error occurred: {e}\n")
+        log_message(f"Unexpected error occurred: {e}")
         print(f"Unexpected error occurred: {e}")
         sys.exit(1)
 
@@ -221,13 +226,14 @@ try:
     log = open(log_file, "a")
 
     if len(sys.argv) < 2:
-        log.write('Usage: python slicer.py <command> [args]\nAvailable commands: create, slice, restore')
+        log_message('Usage: python slicer.py <command> [args]\nAvailable commands: create, slice, restore')
         raise ValueError('Usage: python slicer.py <command> [args]')
 
     if sys.argv[1] == 'create':
         if len(sys.argv) != 5:
-            log.write('FAILURE in create!! Usage: python slicer.py create: directory with files, extension list .txt, '
-                      '.jpg ... [optional ALL for all the extensions],archive path')
+            log_message(
+                'FAILURE in create!! Usage: python slicer.py create: directory with files, extension list .txt, '
+                '.jpg ... [optional ALL for all the extensions],archive path')
             raise ValueError('Usage: python slicer.py create: directory with files, extension list, archive path')
         create_archive(sys.argv[2], sys.argv[3].split(','), sys.argv[4])
 
@@ -235,39 +241,39 @@ try:
         if len(sys.argv) == 5:
             slice_archive(sys.argv[2], sys.argv[3], int(sys.argv[4]))
         elif len(sys.argv) != 4:
-            log.write('FAILURE in slice!! Usage: python slicer.py slice: archive path, output directory path, ['
-                      'optional number of slices]')
+            log_message('FAILURE in slice!! Usage: python slicer.py slice: archive path, output directory path, ['
+                        'optional number of slices]')
             raise ValueError('Usage: python slicer.py slice: archive path, output directory path')
         else:
             slice_archive(sys.argv[2], sys.argv[3])
 
     elif sys.argv[1] == 'restore':
         if len(sys.argv) != 4:
-            log.write('FAILURE in restore!! Usage: python slicer.py restore: folder path with slices of archive, '
-                      'archive output path')
+            log_message('FAILURE in restore!! Usage: python slicer.py restore: folder path with slices of archive, '
+                        'archive output path')
             raise ValueError('Usage: python slicer.py restore: folder path with slices of archive, archive output path')
         restore_archive(sys.argv[2], sys.argv[3])
 
     else:
-        log.write(f'Unknown command: {sys.argv[1]}')
+        log_message(f'Unknown command: {sys.argv[1]}')
         raise ValueError(f'Unknown command: {sys.argv[1]}')
 
 except IOError as e:
-    log.write(f"IO error: {e}")
+    log_message(f"IO error: {e}")
     print(f"IO error: {e}")
     sys.exit(1)
 
 except ValueError as e:
-    log.write(f"Value error: {e}")
+    log_message(f"Value error: {e}")
     print(f"Value error: {e}")
     sys.exit(1)
 
 except Exception as e:
-    log.write(f"Unexpected error occurred in the main program: {e}")
+    log_message(f"Unexpected error occurred in the main program: {e}")
     print(f"Unexpected error occurred in the main program: {e}")
     sys.exit(1)
 
 finally:
     if log:
-        log.write("\nLog ended.")
+        log_message("Log ended.")
         log.close()

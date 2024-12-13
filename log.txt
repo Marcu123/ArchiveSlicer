@@ -195,3 +195,28 @@ Log started:
 Archive restored successfully. Output path: new_archive
 
 Log ended.
+Log started:
+Unexpected error occurred in the main program: create_archive() missing 1 required positional argument: 'log'
+Log ended.
+Log started:
+Archive created successfully: arhiva
+Log ended.
+Log started:
+Slicing completed successfully. Output directory: output
+
+Log ended.
+Log started:
+[2024-12-14 01:05:35] File error: Archive file 'C:\Users\marcu\OneDrive\Desktop\ArchiveSlicer\arhiva' not found.
+[2024-12-14 01:05:35] Log ended.
+
+Log started:
+[2024-12-14 01:05:51] Archive created successfully: arhiva
+[2024-12-14 01:05:51] Log ended.
+
+Log started:
+[2024-12-14 01:06:12] Slicing completed successfully. Output directory: output
+[2024-12-14 01:06:12] Log ended.
+
+Log started:
+[2024-12-14 01:07:15] Archive restored successfully. Output path: new_archive
+[2024-12-14 01:07:15] Log ended.
