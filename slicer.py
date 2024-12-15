@@ -17,8 +17,8 @@ def create_archive(directory, extensions, archive_path):
             extensions = [ext.lstrip('.') for ext in extensions]
 
         if not os.path.isdir(directory):
-            log_message(f"Error: The directory '{directory}' is not a directory.")
-            raise FileNotFoundError(f"Error: The directory '{directory}' is not a directory.")
+            log_message(f"The directory '{directory}' is not a directory.")
+            raise FileNotFoundError(f"The directory '{directory}' is not a directory.")
 
         if not extensions:
             dict_extensions = {}
@@ -41,7 +41,7 @@ def create_archive(directory, extensions, archive_path):
                 dict_extensions.pop(key)
 
         if len(dict_extensions) == 0:
-            log_message(f"Error: No files with the specified extensions found in the directory '{directory}'.")
+            log_message(f"No files with the specified extensions found in the directory '{directory}'.")
             raise FileNotFoundError(f"No files with the specified extensions found in the directory '{directory}'.")
 
         with open(archive_path, 'wb') as archive:
@@ -74,18 +74,18 @@ def create_archive(directory, extensions, archive_path):
         log_message(f"Archive created successfully: {archive_path}")
         print(f"Archive created successfully: {archive_path}")
     except FileNotFoundError as e:
-        log_message(f"File error: {e}")
-        print(f"File error: {e}")
+        log_message(f"Error in Create: File error: {e}")
+        print(f"Error in Create: File error: {e}")
         sys.exit(1)
 
     except struct.error as e:
-        log_message(f"Struct error while packing data: {e}")
-        print(f"Struct error while packing data: {e}")
+        log_message(f"Error in Create: Struct error while packing data: {e}")
+        print(f"Error in Create: Struct error while packing data: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log_message(f"Unexpected error occurred: {e}")
-        print(f"Unexpected error occurred: {e}")
+        log_message(f"Error in Create: Unexpected error occurred: {e}")
+        print(f"Error in Create: Unexpected error occurred: {e}")
         sys.exit(1)
 
 
@@ -129,23 +129,23 @@ def slice_archive(archive_path, output_directory, number_of_slices=5):
         print(f"Slicing completed successfully. Output directory: {output_directory}")
 
     except FileNotFoundError as e:
-        log_message(f"File error: {e}")
-        print(f"File error: {e}")
+        log_message(f"Error in Slice: File error: {e}")
+        print(f"Error in Slice: File error: {e}")
         sys.exit(1)
 
     except ValueError as e:
-        log_message(f"Value error: {e}")
-        print(f"Value error: {e}")
+        log_message(f"Error in Slice: Value error: {e}")
+        print(f"Error in Slice: Value error: {e}")
         sys.exit(1)
 
     except IOError as e:
-        log_message(f"IO error: {e}")
-        print(f"IO error: {e}")
+        log_message(f"Error in Slice: IO error: {e}")
+        print(f"Error in Slice: IO error: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log_message(f"Unexpected error occurred: {e}")
-        print(f"Unexpected error occurred: {e}")
+        log_message(f"Error in Slice: Unexpected error occurred: {e}")
+        print(f"Error in Slice: Unexpected error occurred: {e}")
         sys.exit(1)
 
 
@@ -187,28 +187,28 @@ def restore_archive(slices_path, archive_output_path):
         print(f"Archive restored successfully. Output path: {archive_output_path}")
 
     except FileNotFoundError as e:
-        log_message(f"File error: {e}")
-        print(f"File error: {e}")
+        log_message(f"Error in Restore: File error: {e}")
+        print(f"Error in Restore: File error: {e}")
         sys.exit(1)
 
     except PermissionError as e:
-        log_message(f"Permission error: {e}")
-        print(f"Permission error: {e}")
+        log_message(f"Error in Restore: Permission error: {e}")
+        print(f"Error in Restore: Permission error: {e}")
         sys.exit(1)
 
     except ValueError as e:
-        log_message(f"Value error: {e}")
-        print(f"Value error: {e}")
+        log_message(f"Error in Restore: Value error: {e}")
+        print(f"Error in Restore: Value error: {e}")
         sys.exit(1)
 
     except IOError as e:
-        log_message(f"IO error: {e}")
-        print(f"IO error: {e}")
+        log_message(f"Error in Restore: IO error: {e}")
+        print(f"Error in Restore: IO error: {e}")
         sys.exit(1)
 
     except Exception as e:
-        log_message(f"Unexpected error occurred: {e}")
-        print(f"Unexpected error occurred: {e}")
+        log_message(f"Error in Restore: Unexpected error occurred: {e}")
+        print(f"Error in Restore: Unexpected error occurred: {e}")
         sys.exit(1)
 
 
@@ -232,7 +232,7 @@ try:
     if sys.argv[1] == 'create':
         if len(sys.argv) != 5:
             log_message(
-                'FAILURE in create!! Usage: python slicer.py create: directory with files, extension list .txt, '
+                'FAILURE in Create!! Usage: python slicer.py create: directory with files, extension list .txt,'
                 '.jpg ... [optional ALL for all the extensions],archive path')
             raise ValueError('Usage: python slicer.py create: directory with files, extension list, archive path')
         create_archive(sys.argv[2], sys.argv[3].split(','), sys.argv[4])
@@ -241,7 +241,7 @@ try:
         if len(sys.argv) == 5:
             slice_archive(sys.argv[2], sys.argv[3], int(sys.argv[4]))
         elif len(sys.argv) != 4:
-            log_message('FAILURE in slice!! Usage: python slicer.py slice: archive path, output directory path, ['
+            log_message('FAILURE in Slice!! Usage: python slicer.py slice: archive path, output directory path, ['
                         'optional number of slices]')
             raise ValueError('Usage: python slicer.py slice: archive path, output directory path')
         else:
@@ -249,7 +249,7 @@ try:
 
     elif sys.argv[1] == 'restore':
         if len(sys.argv) != 4:
-            log_message('FAILURE in restore!! Usage: python slicer.py restore: folder path with slices of archive, '
+            log_message('FAILURE in Restore!! Usage: python slicer.py restore: folder path with slices of archive, '
                         'archive output path')
             raise ValueError('Usage: python slicer.py restore: folder path with slices of archive, archive output path')
         restore_archive(sys.argv[2], sys.argv[3])

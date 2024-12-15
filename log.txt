@@ -220,3 +220,84 @@ Log started:
 Log started:
 [2024-12-14 01:07:15] Archive restored successfully. Output path: new_archive
 [2024-12-14 01:07:15] Log ended.
+
+Log started:
+[2024-12-16 00:01:48] FAILURE in create!! Usage: python slicer.py create: directory with files, extension list .txt, .jpg ... [optional ALL for all the extensions],archive path
+[2024-12-16 00:01:48] Value error: Usage: python slicer.py create: directory with files, extension list, archive path
+[2024-12-16 00:01:48] Log ended.
+
+Log started:
+[2024-12-16 00:01:56] Archive created successfully: arhiva
+[2024-12-16 00:01:56] Log ended.
+
+Log started:
+[2024-12-16 00:02:45] FAILURE in restore!! Usage: python slicer.py restore: folder path with slices of archive, archive output path
+[2024-12-16 00:02:45] Value error: Usage: python slicer.py restore: folder path with slices of archive, archive output path
+[2024-12-16 00:02:45] Log ended.
+
+Log started:
+[2024-12-16 00:02:54] Slicing completed successfully. Output directory: output
+[2024-12-16 00:02:54] Log ended.
+
+Log started:
+[2024-12-16 00:03:11] Archive restored successfully. Output path: new_archive
+[2024-12-16 00:03:11] Log ended.
+
+Log started:
+[2024-12-16 00:04:11] Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:11] File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:11] Log ended.
+
+Log started:
+[2024-12-16 00:04:25] Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:25] File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:25] Log ended.
+
+Log started:
+[2024-12-16 00:04:34] Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:34] File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:34] Log ended.
+
+Log started:
+[2024-12-16 00:04:37] Error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:37] File error: No files with the specified extensions found in the directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book'.
+[2024-12-16 00:04:37] Log ended.
+
+Log started:
+[2024-12-16 00:04:54] Archive created successfully: arhiva
+[2024-12-16 00:04:54] Log ended.
+
+Log started:
+[2024-12-16 00:05:10] Slicing completed successfully. Output directory: output
+[2024-12-16 00:05:10] Log ended.
+
+Log started:
+[2024-12-16 00:09:54] Archive restored successfully. Output path: new_archive
+[2024-12-16 00:09:54] Log ended.
+
+Log started:
+[2024-12-16 00:43:11] Error in Restore: File error: Error in Restore: Directory with slices 'C:\Users\marcu\OneDrive\Desktop\ArchiveSlicer\output' not found.
+[2024-12-16 00:43:11] Log ended.
+
+Log started:
+[2024-12-16 00:44:22] Error in Restore: File error: Directory with slices 'C:\Users\marcu\OneDrive\Desktop\ArchiveSlicer\output' not found.
+[2024-12-16 00:44:22] Log ended.
+
+Log started:
+[2024-12-16 00:44:40] Error in Slice: File error: Archive file 'C:\Users\marcu\OneDrive\Desktop\ArchiveSlicer\arhiva' not found.
+[2024-12-16 00:44:40] Log ended.
+
+Log started:
+[2024-12-16 00:44:50] FAILURE in Create!! Usage: python slicer.py create: directory with files, extension list .txt,.jpg ... [optional ALL for all the extensions],archive path
+[2024-12-16 00:44:50] Value error: Usage: python slicer.py create: directory with files, extension list, archive path
+[2024-12-16 00:44:50] Log ended.
+
+Log started:
+[2024-12-16 00:44:57] Error in Create: The directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book1' is not a directory.
+[2024-12-16 00:44:57] Error in Create: File error: Error in Create: The directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book1' is not a directory.
+[2024-12-16 00:44:57] Log ended.
+
+Log started:
+[2024-12-16 00:45:21] The directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book1' is not a directory.
+[2024-12-16 00:45:21] Error in Create: File error: The directory 'C:\Users\marcu\OneDrive\Desktop\Cook-Book1' is not a directory.
+[2024-12-16 00:45:21] Log ended.

@@ -69,4 +69,4 @@ def extract_archive(archive_path, extract_to):
         print(f"Unexpected error: {e}")
 
 
-extract_archive('arhiva', 'extr')
+extract_archive('new_archive', 'extr')
